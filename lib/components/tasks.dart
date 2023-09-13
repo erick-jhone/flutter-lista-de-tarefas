@@ -1,4 +1,5 @@
 
+import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:flutter/material.dart';
 import 'difficulty.dart';
 
@@ -104,6 +105,7 @@ class _TasksState extends State<Tasks> {
                           height: 52,
                           width: 52,
                           child: ElevatedButton(
+                            onLongPress: (){TaskDao().delete(widget.nome);},
                             onPressed: levelUp,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
