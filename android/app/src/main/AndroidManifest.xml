@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alura_flutter_curso_1">
    <application
-        android:label="alura_flutter_curso_1"
+        android:label="TaskList"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

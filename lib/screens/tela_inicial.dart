@@ -1,6 +1,5 @@
 import 'package:alura_flutter_curso_1/components/tasks.dart';
 import 'package:alura_flutter_curso_1/data/task_dao.dart';
-import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:alura_flutter_curso_1/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,9 +20,11 @@ class _InitialScreenState extends State<InitialScreen> {
         actions: [
           IconButton(onPressed: (){setState(() {
             setState(() {
-              
-            });
-          });}, icon: Icon(Icons.refresh))
+            }
+            );
+          }
+          );
+            }, icon: Icon(Icons.refresh))
         ],
       ),
       body: Container(
@@ -42,7 +43,6 @@ class _InitialScreenState extends State<InitialScreen> {
                     ),
                   );
 
-                  break;
                 case ConnectionState.waiting:
                   return Center(
                     child: Column(

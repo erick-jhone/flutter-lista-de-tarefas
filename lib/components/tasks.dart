@@ -1,4 +1,3 @@
-
 import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:flutter/material.dart';
 import 'difficulty.dart';
@@ -8,19 +7,16 @@ class Tasks extends StatefulWidget {
   final String foto;
   final int dificuldade;
 
-
-
-  Tasks(this.nome, this.foto, this.dificuldade, {Key? key})
-      : super(key: key);
+  Tasks(this.nome, this.foto, this.dificuldade, {Key? key}) : super(key: key);
   int level = 0;
+
   @override
   State<Tasks> createState() => _TasksState();
 }
 
 class _TasksState extends State<Tasks> {
-
-  bool assetOrNetwork(){
-    if(widget.foto.contains('http')){
+  bool assetOrNetwork() {
+    if (widget.foto.contains('http')) {
       return false;
     } else {
       return true;
@@ -68,19 +64,21 @@ class _TasksState extends State<Tasks> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(4),
-                          child: assetOrNetwork() ? Image.asset(
-                          widget.foto,
-                          height: 100,
-                          width: 72,
-                          fit: BoxFit.cover,)
-                          :Image.network(
-                            widget.foto,
-                            height: 100,
-                            width: 72,
-                            fit: BoxFit.cover,),
-
-                            ),
+                            child: assetOrNetwork()
+                                ? Image.asset(
+                                    widget.foto,
+                                    height: 100,
+                                    width: 72,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    widget.foto,
+                                    height: 100,
+                                    width: 72,
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
+                        ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -99,28 +97,32 @@ class _TasksState extends State<Tasks> {
                           // vai ser um novo componente.
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          height: 52,
-                          width: 52,
-                          child: ElevatedButton(
-                            onLongPress: (){TaskDao().delete(widget.nome);},
-                            onPressed: levelUp,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: const [
-                                Icon(Icons.arrow_drop_up),
-                                Text(
-                                  'UP',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                              ],
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              child: IconButton(
+                                onPressed: levelUp,
+                              icon:Icon(Icons.upload, color: Colors.green,)),
+                              ),
                             ),
-                          ),
-                        ),
-                      )
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                                  child: IconButton(
+                                  onPressed:() => TaskDao().delete(widget.nome),
+                                  icon:Icon(Icons.delete, color: Colors.red)),
+                                  ),
+                            ),
+
+                        ],
+                      ),
+
                     ],
                   ),
                 ),
