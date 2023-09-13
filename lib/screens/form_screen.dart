@@ -1,3 +1,5 @@
+import 'package:alura_flutter_curso_1/components/tasks.dart';
+import 'package:alura_flutter_curso_1/data/task_dao.dart';
 import 'package:alura_flutter_curso_1/data/task_inherited.dart';
 import 'package:flutter/material.dart';
 
@@ -143,15 +145,10 @@ class _FormScreenState extends State<FormScreen> {
                         ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // print('Nome: ${nameController.text}');
-                        // print(
-                        //     'Dificuldade: ${int.parse(difficultyController.text)}');
-                        // print('Image: ${imageController.text}');
-                        TaskInherited.of(widget.taskContext).newTask(
-                            nameController.text,
+                        TaskDao().save(Tasks(nameController.text,
                             imageController.text,
-                            int.parse(difficultyController.text)
-                        );
+                            int.parse(difficultyController.text)));
+
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Enviando informações!')));
